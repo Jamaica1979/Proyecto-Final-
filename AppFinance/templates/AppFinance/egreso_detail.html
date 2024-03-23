@@ -1,0 +1,24 @@
+{% extends "AppFinance/padre.html" %}
+
+
+{% load static %}
+
+
+{% block titulo%}
+
+Detalle de este Egreso
+
+{% endblock %}
+
+{% block descripcion%}
+
+<p>Fecha: {{egreso.fecha}}</p>
+<p>Importe: {{egreso.importe}}</p>
+<p>Categoria: {{egreso.categoria}}</p>
+<p>Descripcion: {{egreso.descripcion}}</p>
+
+<a style="color:black" href="{% url 'EgresosLeer' %}"> Regresar </a>
+
+
+
+{% endblock %}

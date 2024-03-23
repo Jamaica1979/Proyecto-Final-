@@ -1,0 +1,24 @@
+{% extends "AppFinance/padre.html" %}
+
+
+{% load static %}
+
+
+{% block titulo%}
+
+Detalle de este Ingreso.
+
+{% endblock %}
+
+{% block descripcion%}
+
+<p>Fecha: {{ingreso.fecha}}</p>
+<p>Importe: {{ingreso.importe}}</p>
+<p>Categoria: {{ingreso.categoria}}</p>
+<p>Descripcion: {{ingreso.descripcion}}</p>
+
+<a style="color:black" href="{% url 'IngresosLeer' %}"> Regresar </a>
+
+
+
+{% endblock %}

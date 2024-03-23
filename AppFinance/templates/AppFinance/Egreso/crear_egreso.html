@@ -1,0 +1,23 @@
+{% extends "AppFinance/padre.html" %}
+
+
+{% load static %}
+
+
+{% block titulo%}
+
+Egresos: indique los datos necesarios.
+
+{% endblock %}
+
+{% block descripcion %}
+
+<form action = "" method = "POST"> {% csrf_token %}
+
+{{form}}
+
+<input type="submit" value = 'Guardar'>
+    
+</form>
+
+{% endblock %}

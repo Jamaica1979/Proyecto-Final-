@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Financial App</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'AppFinance/assets/favicon.ico' %}" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="{% static 'AppFinance/assets/favicon.ico' %}" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="{% static 'AppFinance/assets/jamaica.jpg' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'AppFinance/assets/favicon.ico' %}" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'AppFinance/css/styles.css' %}" rel="stylesheet" />
+    </head> 
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+            <div class="container">
+                <a style='color:gray'class="navbar-brand" href="{% url 'Inicio' %}">Home</a>
+                <a class="navbar-brand" href="{% url 'Acerca de Mi' %}">Acerca de Mi</a>
+                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Agregar Avatar' %}">Avatar</a></li>
+
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'CuentasLeer' %}">Cuenta</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'IngresosLeer' %}">Ingreso</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'EgresosLeer' %}">Egreso</a></li>                                
+
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Editar Usuario' %}">Editar usuario</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Cambiar Contraseña' %}">Contraseña</a><li>
+
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Cerrar Sesion' %}">Logout</a></li>
+                        <p class="navbar-brand" style="color: white"> Hola {{user.first_name}}</p>
+
+                        {% if user.avatar_set.last %}
+                        <img src="{{user.avatar_set.last.imagen.url}}" width="70px" height="50px" alt="Foto del avatar del usuario activo.">
+                        {% else %}
+                        <img src="{% static 'AppFinance/assets/img/default_images.jpg' %}" width="70px" height="50px" alt="">
+                        {% endif %}
+
+                        
+
+                        {% else %}
+                       
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Registro' %}">Registrarse</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'Login' %}">Login</a></li>
+                        
+                        {% endif %}
+ 
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead bg-primary text-white text-center">
+            <div class="container d-flex align-items-center flex-column">
+                <!-- Masthead Avatar Image-->
+                <img class="masthead-avatar mb-5" src="{% static 'AppFinance/assets/img/contabilidad.jpg' %}" alt="..." />
+                <!-- Masthead Heading-->
+                <h1 class="masthead-heading text-uppercase mb-0">
+                    
+                    {% block titulo %}
+                    
+                    FINANCE
+
+                    {% endblock %}
+                
+                </h1>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Masthead Subheading-->
+                <p class="masthead-subheading font-weight-light mb-0">
+                    
+                    {% block descripcion %}
+                    
+                    {% endblock %}
+                
+                </p>
+            </div>
+        </header>
+        

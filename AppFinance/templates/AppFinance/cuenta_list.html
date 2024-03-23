@@ -1,0 +1,29 @@
+{% extends "AppFinance/padre.html" %}
+
+
+{% load static %}
+
+
+{% block titulo%}
+
+Listado de Cuentas
+
+{% endblock %}
+
+{% block descripcion %}
+
+{% for cuenta in object_list %}
+
+<p>Tipo: {{cuenta.tipo}}</p>
+<p>Nombre: {{cuenta.nombre}}</p>
+
+<a style="color:Black" href="{% url 'CuentasDetalle' cuenta.id %}"> Ver Cuenta </a>
+<a style="color:Black" href="{% url 'CuentasEditar' cuenta.id %}"> Editar Cuenta </a>
+<a style="color:Black" href="{% url 'CuentasEliminar' cuenta.id %}"> Eliminar Cuenta </a>
+
+{%endfor%}
+
+<br>
+<a style="color:Black" href="{% url 'CuentasCrear' %}">  Crear Cuenta </a>
+
+{% endblock %}

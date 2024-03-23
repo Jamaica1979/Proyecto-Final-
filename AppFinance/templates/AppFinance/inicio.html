@@ -1,0 +1,33 @@
+{% extends "AppFinance/padre.html" %}
+
+
+{% load static %}
+
+
+{% block titulo%}
+
+{{mensaje}}
+
+Tus finanzas al siguiente nivel
+
+{% endblock %}
+
+{% block descripcion%}
+
+{% if request.user.is_authenticated %}
+
+Aquí puede buscar sus ultimos registros de Ingresos por su descripcion.
+
+<form action = "/AppFinance/resultados/" method = "GET"> 
+
+    <input type="text" name='descripcion' id='descripcion'>
+
+    <input type='submit' value="Buscar">  
+
+</form>
+    
+<p> {{resultados}}<p>
+
+{%endif%}
+
+{% endblock %}

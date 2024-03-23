@@ -1,0 +1,29 @@
+{% extends "AppFinance/padre.html" %}
+
+
+{% load static %}
+
+
+{% block titulo%}
+
+Listado de Egresos
+
+{% endblock %}
+
+{% block descripcion %}
+
+{% for egreso in object_list %}
+
+<p>Descripcion: {{egreso.descripcion}}</p>
+<p>Importe: {{egreso.importe}}</p>
+
+<a style="color:Black" href="{% url 'EgresosDetalle' egreso.id %}"> Ver Egreso </a>
+<a style="color:Black" href="{% url 'EgresosEditar' egreso.id %}"> Editar Egreso </a>
+<a style="color:Black" href="{% url 'EgresosEliminar' egreso.id %}"> Eliminar Egreso </a>
+
+{%endfor%}
+
+<br>
+<a style="color:Black" href="{% url 'EgresosCrear' %}">  Crear Egreso </a>
+
+{% endblock %}
